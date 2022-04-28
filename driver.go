@@ -6,3 +6,7 @@ type Driver struct {
 	file_name string
 	licenses  []*License
 }
+
+func (d *Driver) AssignNewNumber(num int) {
+	d.number = num
+}

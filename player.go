@@ -6,7 +6,11 @@ type Player struct {
 	teamMoney     float64
 	nationality   *string
 	carCollection []*Car
+	teamName      string
 	teams         []*Team
+	exp           int
+	expToLevel    int
+	level         int
 }
 
 func NewPlayer(name string, number int) *Player {
@@ -21,12 +25,10 @@ func (p *Player) SetNationality(index int) {
 
 //Method *Player.Pay takes bool team and float64 amount. This will pay money based on which value team is
 func (p *Player) Pay(team bool, amount float64) {
-	if p.HasMoney(team, amount) {
-		if team {
-			p.teamMoney -= amount
-		} else {
-			p.money -= amount
-		}
+	if team {
+		p.teamMoney -= amount
+	} else {
+		p.money -= amount
 	}
 }
 
@@ -61,4 +63,22 @@ func (p *Player) AttemptDriverTest(lic *License) {
 		//TODO: Go to start game screen with various settings and such
 		lic.DrawLicenseTestSetupScreen()
 	}
+}
+
+func (p *Player) HasCar(name string) bool {
+	for _, car := range p.carCollection {
+		if car.name == name {
+			return true
+		}
+	}
+	return false
+}
+
+func (p *Player) HasLicense(lic *License) bool {
+	for _, li := range p.driver.licenses {
+		if li == lic {
+			return true
+		}
+	}
+	return false
 }

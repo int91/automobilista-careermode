@@ -1,11 +1,9 @@
 package main
 
-import "fmt"
-
 type License struct {
 	name     string
 	testCost float64
-	car      *Car
+	car      Car
 	track    *Track
 	laptime  float64
 }
@@ -26,11 +24,4 @@ func GetLicense(name string) *License {
 		}
 	}
 	return nil
-}
-
-func (lic *License) DrawLicenseTestSetupScreen() {
-	//TODO: Draw "Press 1 once loaded into the time trial"
-	//TODO: If the player does not own the car for the test, they may rent or purchase it.
-	fmt.Printf("Please load Practice on %s with the %s", lic.track.name, lic.car.name)
-	fmt.Printf("You will be given 3 laps to beat a laptime of %f", lic.laptime)
 }
