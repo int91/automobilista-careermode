@@ -31,6 +31,6 @@ func GetLicense(name string) *License {
 func (lic *License) DrawLicenseTestSetupScreen() {
 	//TODO: Draw "Press 1 once loaded into the time trial"
 	//TODO: If the player does not own the car for the test, they may rent or purchase it.
-	fmt.Println(fmt.Sprintf("Please load Practice on %s with the %s", lic.track.name, lic.car.name))
-	fmt.Println(fmt.Sprintf("You will be given 3 laps to beat a laptime of %f", lic.laptime))
+	fmt.Printf("Please load Practice on %s with the %s", lic.track.name, lic.car.name)
+	fmt.Printf("You will be given 3 laps to beat a laptime of %f", lic.laptime)
 }

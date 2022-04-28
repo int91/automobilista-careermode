@@ -9,3 +9,8 @@ type RaceTeam struct {
 	name  string
 	teams []*Team
 }
+
+func NewTeam(name string) *Team {
+	nTeam := Team{name: name}
+	return &nTeam
+}

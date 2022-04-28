@@ -19,14 +19,18 @@ func (p *Player) SetNationality(index int) {
 	p.nationality = &NATIONS[index]
 }
 
+//Method *Player.Pay takes bool team and float64 amount. This will pay money based on which value team is
 func (p *Player) Pay(team bool, amount float64) {
-	if team {
-		p.teamMoney -= amount
-	} else {
-		p.money -= amount
+	if p.HasMoney(team, amount) {
+		if team {
+			p.teamMoney -= amount
+		} else {
+			p.money -= amount
+		}
 	}
 }
 
+//Method *Player.HasMoney takes bool team and float64 amount. This will return true if one account has enough money
 func (p *Player) HasMoney(team bool, amount float64) bool {
 	if team && p.teamMoney >= amount {
 		return true
